@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vegan Burger Rush</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: #222; font-family: sans-serif; touch-action: none; user-select: none; -webkit-user-select: none; }
+        #game-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        
+        /* UI Overlay */
+        #ui-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; }
+        
+        #top-bar { padding: 10px; display: flex; justify-content: space-between; align-items: flex-start; pointer-events: auto; }
+        .score-board { background: rgba(0,0,0,0.5); color: white; padding: 10px; border-radius: 8px; font-weight: bold; }
+        #orders-container { display: flex; gap: 10px; }
+        .order-card { background: white; padding: 5px; border-radius: 5px; border: 2px solid #ccc; width: 60px; display: flex; flex-direction: column; align-items: center; }
+        .order-card img { width: 20px; height: 20px; margin-bottom: -5px; }
+        .order-timer { height: 4px; background: green; width: 100%; margin-top: 5px; }
+        
+        #controls { height: 150px; position: relative; pointer-events: none; display: flex; justify-content: space-between; padding: 20px; align-items: flex-end; }
+        
+        #joystick-zone { width: 120px; height: 120px; pointer-events: auto; }
+        
+        #action-btn { 
+            width: 100px; height: 100px; 
+            background: #ff9800; 
+            border-radius: 50%; 
+            border: 4px solid #fff; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            pointer-events: auto;
+            display: flex; justify-content: center; align-items: center;
+            font-weight: bold; color: white; font-size: 18px;
+            active: scale(0.95);
+        }
+        #action-btn:active { transform: scale(0.95); background: #f57c00; }
+
+        /* Start Screen */
+        #start-screen {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; z-index: 100; pointer-events: auto;
+        }
+        button.start-btn {
+            padding: 15px 30px; font-size: 24px; background: #4CAF50; color: white; border: none; border-radius: 8px; cursor: pointer;
+        }
+    </style>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://esm.sh/three@0.160.0",
+                "three/addons/": "https://esm.sh/three@0.160.0/examples/jsm/",
+                "nipplejs": "https://esm.sh/nipplejs@0.10.1"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="game-container"></div>
+    <div id="ui-layer">
+        <div id="top-bar">
+            <div class="score-board">
+                Score: <span id="score">0</span>
+            </div>
+            <div id="orders-container">
+                <!-- Orders injected here -->
+            </div>
+        </div>
+        <div id="controls">
+            <div id="joystick-zone"></div>
+            <div id="action-btn">Interact</div>
+        </div>
+    </div>
+
+    <div id="start-screen">
+        <h1>Vegan Burger Rush</h1>
+        <p>Cook patties, build burgers, feed customers!</p>
+        <button class="start-btn" id="start-btn">Start Cooking</button>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
