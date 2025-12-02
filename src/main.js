@@ -20,12 +20,8 @@ const orders = [];
 // --- Init ---
 async function init() {
     const startBtn = document.getElementById('start-btn');
-    startBtn.addEventListener('click', async () => {
-        document.getElementById('start-screen').style.display = 'none';
-        audio.enable();
-        await setupGame();
-        animate(0);
-    });
+    startBtn.disabled = true;
+    startBtn.textContent = "Loading...";
 
     // Preload sounds
     audio.load('sizzle', 'sizzle.mp3');
@@ -34,6 +30,16 @@ async function init() {
     audio.load('trash', 'trash.mp3');
 
     await loadAssets();
+
+    startBtn.disabled = false;
+    startBtn.textContent = "Start Cooking";
+
+    startBtn.addEventListener('click', async () => {
+        document.getElementById('start-screen').style.display = 'none';
+        audio.enable();
+        await setupGame();
+        animate(0);
+    });
 }
 
 async function setupGame() {

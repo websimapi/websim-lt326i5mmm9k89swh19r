@@ -19,6 +19,18 @@ export function loadAssets() {
                 tex.colorSpace = THREE.SRGBColorSpace;
                 textures[name] = tex;
                 resolve();
+            }, undefined, (err) => {
+                console.warn(`Failed to load texture: ${name}`, err);
+                // Fallback texture
+                const canvas = document.createElement('canvas');
+                canvas.width = 64; canvas.height = 64;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#ff00ff';
+                ctx.fillRect(0,0,64,64);
+                const fallback = new THREE.CanvasTexture(canvas);
+                fallback.colorSpace = THREE.SRGBColorSpace;
+                textures[name] = fallback;
+                resolve();
             });
         });
     }));
