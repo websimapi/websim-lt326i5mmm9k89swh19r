@@ -161,12 +161,12 @@ let joystickManager;
 let moveVector = new THREE.Vector2(0, 0);
 
 function setupControls() {
-    const zone = document.getElementById('joystick-zone');
+    const zone = document.getElementById('controls-left');
     joystickManager = nipplejs.create({
         zone: zone,
-        mode: 'static',
-        position: { left: '50%', top: '50%' },
-        color: 'white'
+        mode: 'dynamic',
+        color: 'white',
+        size: 150
     });
 
     joystickManager.on('move', (evt, data) => {

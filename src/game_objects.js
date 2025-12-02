@@ -25,7 +25,8 @@ export class Chef extends THREE.Group {
         const material = new THREE.MeshBasicMaterial({ 
             map: textures.chef_top, 
             transparent: true,
-            side: THREE.DoubleSide
+            side: THREE.DoubleSide,
+            alphaTest: 0.5
         });
         this.mesh = new THREE.Mesh(geometry, material);
         // Rotate so it's flat on the ground (XZ plane), but actually we are doing top down camera looking at XY usually? 
@@ -73,7 +74,8 @@ export class Ingredient extends THREE.Group {
         const material = new THREE.MeshBasicMaterial({ 
             map: tex, 
             transparent: true,
-            side: THREE.DoubleSide
+            side: THREE.DoubleSide,
+            alphaTest: 0.5
         });
 
         this.mesh = new THREE.Mesh(geometry, material);
@@ -95,7 +97,8 @@ export class Ingredient extends THREE.Group {
         const geometry = new THREE.PlaneGeometry(0.8, 0.8);
         const material = new THREE.MeshBasicMaterial({ 
             map: textures[texName], 
-            transparent: true 
+            transparent: true,
+            alphaTest: 0.5
         });
         const mesh = new THREE.Mesh(geometry, material);
         mesh.rotation.x = -Math.PI / 2;
